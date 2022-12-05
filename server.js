@@ -1,7 +1,11 @@
 const express = require("express");
+const User = require("./models/userModel");
+require("dotenv").config();
 const app = express();
+require("./config/db");
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const user = await User.find({});
   res.send({ msg: "Hello World" });
 });
 
